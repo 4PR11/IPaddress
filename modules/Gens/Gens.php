@@ -1,44 +1,32 @@
 <?php
 
-function ver_gen ($op) {
+const FIRST_IP_BYTE = 10;
+
+//функция-фабрика
+function verGen ($op) {
 	if ($op<0 && $op>2) {
 	 $op = 0;
 	}
 	if ($op == 0) {
-	   $ip = ip_gen();
-	   $str = ipDec($ip);
-	   echo "<h1>".$str."</h1>";
-	   $ip = mask_gen();
-	   $str = ipDec($ip); 
-	   echo "<h2>".$str."</h2>"; 
+	//генирация двоичная
 	} elseif ($op == 1) {
-	   $ip = ip_gen();
-	   $str = ipBin($ip);
-	   echo "<h1>".$str."</h1>";
-	   $ip = mask_gen();
-	   $str = ipBin($ip); 
-	   echo "<h2>".$str."</h2>"; 
-	} elseif ($op == 2) {
-	  $ip = ip_gen();
-	   $str = ipHex($ip);
-	   echo "<h1>".$str."</h1>";
-	   $ip = mask_gen();
-	   $str = ipHex($ip); 
-	   echo "<h2>".$str."</h2>"; 
+	//генирация шеснадцетеричная
+	} else {
+	//генирация десятичная   
 	}
 }
 
-function ip_gen () {
-	$ip = array(10,0,0,0);
+function ipGen () {
+	$ip = array(FIRST_IP_BYTE,0,0,0);
 	for ($i = 1; $i < 4 ; $i++) { 
 		$ip[$i] = rand(0, 255);
 	}
 	return $ip;	
 }
 
-function mask_gen() {
+function maskGen() {
 	$mask = array(0,0,0,0);
-	$one_number = rand(5, 30);
+	$one_number = rand(8, 30);
 	$i = 0;
 	$bin_str="";
 	while ($i <= 4) {
@@ -77,12 +65,42 @@ function ipHex($ip){
 	return trim($result, '.');
 }
 
-ver_gen(0);
-echo "<br>";
-ver_gen(1);
-echo "<br>";
-ver_gen(2);
-echo "<br>";
+function ipParser($ip_str){
+	$ip = array(0,0,0,0);
+	$ip_str_array = preg_split('/[.]/', $ip_str);
+	$count_array=count($ip_str_array);
+	if ($ip_str_array[0] == decbin(FIRST_IP_BYTE)) {
+	   for ($i = 1; $i < 4 ; $i++) { 
+			$ip[$i] = bindec($ip_str_array[$i]) ;
+		}
+	} elseif ($ip_str_array[0] == dechex(FIRST_IP_BYTE)) {
+	   for ($i = 1; $i < 4 ; $i++) { 
+			$ip[$i] = hexdec($ip_str_array[$i]) ;
+		}
+	} else {
+		for ($i = 1; $i < 4 ; $i++) { 
+			$ip[$i] = (int)($ip_str_array[$i]) ;
+		}
+	}
+	 return $ip;
+}
 
+function netAddress($ip, $mask){
+	$conjunction = array(0,0,0,0);
+	for ($i=0; $i < 4 ; $i++) { 
+		$conjunction[$i] = ($ip[$i] & $mask[$i]);
+	}
+	return $conjunction;
+}
+
+//проверка-тест
+$ip = ipGen();
+$mask = maskGen();
+$str = ipBin($ip);
+$str2 = ipBin($mask);
+$network_address = network_address($ip, $mask);
+echo "<h1>".$str."</h1>";
+echo "<h2>".$str2."</h2>";
+echo "<h3>".ipBin($network_address)."</h3>";
 ?>
 
