@@ -138,3 +138,24 @@ body{
 	top: 100px;
 	left: 35%;
 }
+
+.entire_row{
+	display: inline-block;
+	margin: 0 auto;
+}
+
+#notify {
+		margin: 0 auto;
+        background-color: #f45158;
+        width: 230px;
+        height: 50px;
+        vertical-align: middle;
+        color: #fff;
+
+}
+
+#notify-cont{
+	margin: 0 auto;
+	height: 50px;
+	width: 230px;
+}

@@ -1,7 +1,16 @@
 var el = document.getElementById('cover_main');
 var bd = document.getElementById('cover_body');
+var input = document.getElementById('code-field');
+var form = document.getElementById('form');
+// var mesElement = document.createElement('div');
+var mesElement = document.getElementById('notify');
 // var logo = document.getElementById('Logo_bar');
 var w = 0;
+
+// mesElement.id = 'notify';
+// mesElement.style.display = 'none';
+// form.appendChild(mesElement);
+
 el.style.width = innerWidth + 'px';
 el.style.height = innerHeight + 'px';
 // logo.style.top = innerHeight/10 + 'px';
@@ -27,6 +36,22 @@ function resize_info()
 	// w = (innerWidth/2 - 242);
 	// logo.style.left = w + 'px';
 }
+
+input.addEventListener('invalid', function(event){
+	event.preventDefault();
+    if ( !event.target.validity.valid ) {
+        mesElement.textContent   = 'Код введен неверно!';
+        mesElement.className     = 'error';
+        mesElement.style.display = 'table-cell';
+        input.className    = 'invalid animated shake';
+    }
+});
+
+
+
+
+
+
 
 // (function(){
 //   var body = document.body,
