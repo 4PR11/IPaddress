@@ -6,6 +6,7 @@ var form = document.getElementById('form');
 var mesElement = document.getElementById('notify');
 // var logo = document.getElementById('Logo_bar');
 var w = 0;
+var phpDoc = 'Login.php';
 
 // mesElement.id = 'notify';
 // mesElement.style.display = 'none';
@@ -44,6 +45,29 @@ function resize_info()
 //    }
 //});
 
+function logFrm(param){
+
+    switch (param){
+        case 0:
+            $("#admin-login").css('display', 'block');
+            $("div.btn-cover").css('display', 'none');
+            phpDoc = 'LoginW.php';
+        break;
+        case 1:
+            $("#neadmin-login").css('display', 'block');
+            $("div.btn-cover").css('display', 'none');
+            phpDoc = 'Login.php';
+        break;
+        case 2:
+            $("div.btn-cover").css('display', 'block');
+            $("#admin-login").css('display', 'none');
+            $("#neadmin-login").css('display', 'none');
+            mesElement.style.display = 'none';
+            $("input.txt-field").val('');
+        break;
+    }
+}
+
 function GetLogin(){
     var request;
     $("#formLogin").submit(function(event){
@@ -53,12 +77,12 @@ function GetLogin(){
         var $inputs = $form.find("input, select, button, textarea");
         var serializedData = $form.serialize();
         request = $.ajax({
-            url: "Login.php",
+            url: phpDoc,
             type: "post",
             data: serializedData,
             success:function(msg){
             if (msg == "") {
-                mesElement.textContent   = 'Код введен неверно!';
+                mesElement.textContent   = 'Пользователь не найден';
                 mesElement.className     = 'error';
                 mesElement.style.display = 'table-cell';
                 input.className    = 'invalid animated shake';
@@ -69,6 +93,7 @@ function GetLogin(){
         });
     }); 
 }
+
 
 // (function(){
 //   var body = document.body,

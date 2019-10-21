@@ -81,6 +81,8 @@ body{
 	width: 100%;
 	height: 506px;
 	background-color: #c4d5e4;
+	display: block;
+	padding-top: 30px;
 }
 
 .both-row{
@@ -113,22 +115,6 @@ body{
 	transition: background-position 0.6 ease-out;
 }
 
-#Start_btn{
-	width: 200px;
-	height:50px;
-	border-radius: 10px;
-	background-color: #fff;
-	border:none;
-	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
-	text-transform: uppercase;
-	font-size: 30px;
-}
-
-#Start_btn:active{
-	width: 196px;
-	height:48px;
-}
-
 #Logo_bar{
 	color: white;
 	text-transform: uppercase;
@@ -158,4 +144,66 @@ body{
 	margin: 0 auto;
 	height: 50px;
 	width: 230px;
+}
+
+#answer-table{
+	margin: 0 auto;
+}
+
+#answer-table input{
+	width: 130px;
+	height: 25px;
+	text-align: center;
+}
+
+#answer-table td{
+	height: 25px;
+	vertical-align: bottom;
+}
+
+#task-table {
+	margin: 0 auto;
+}
+
+
+#neadmin-login{
+	display: none;
+}
+
+#admin-login{
+	display: none;
+}
+
+.switch_btn{
+	width: 200px;
+	height:40px;
+	border-radius: 10px;
+	background-color: #fff;
+	border:none;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	text-transform: uppercase;
+	font-size: 17px;
+}
+
+.btn-cover input:last-child{
+	margin-top: 5px;
+}
+
+.switch_btn:active{
+	background-color: #e6e6e6;
+}
+
+.func-btn{
+	width: 110px;
+	height:30px;
+	border-radius: 10px;
+	background-color: #fff;
+	border:none;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.func-btn:active{
+	background-color: #e6e6e6;
 }

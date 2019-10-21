@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
-	<title>Page_One</title>
+	<title>Задания</title>
 </head>
 <body>
 	<div class="main-container">
@@ -21,52 +21,88 @@
 		</div>
 		<div class="separator"></div>
 		<div class="task-row">
-			Адрес узла: 10.174.183.139 <br>
-			Маска подсети: 255.255.128.0
+			<table id="task-table">
+				<tr>
+					<td>
+						Адрес узла: 10.174.183.139
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Маска подсети: 255.255.128.0
+					</td>
+				</tr>
+			</table>
 		</div>
 		<div class="separator"></div>
 		<div class="answer-row">
-			<table>
+			<table id="answer-table">
 				<tr>
+					<td>
+						<div>Задание...</div>		
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="">.
+						<input type="text" name=""> .
+						<input type="text" name=""> . 
+						<input type="text" name="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Задание...</div>		
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name=""> .
+						<input type="text" name=""> .
+						<input type="text" name=""> . 
+						<input type="text" name="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Задание...</div>		
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name=""> .
+						<input type="text" name=""> .
+						<input type="text" name=""> . 
+						<input type="text" name="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Задание...</div>		
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name=""> .
+						<input type="text" name=""> .
+						<input type="text" name=""> . 
+						<input type="text" name="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Задание...</div>		
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name=""> .
+						<input type="text" name=""> .
+						<input type="text" name=""> . 
+						<input type="text" name="">
+					</td>
+				</tr>
 			</table>
-			<div class="entire_row">
-				<div>Задание...</div>
-				<input type="tex" name=""> .
-				<input type="tex" name=""> .
-				<input type="tex" name=""> . 
-				<input type="tex" name="">
-			</div>
-
-			<br>
-			
-			<div class="entire_row">
-				<div>Задание...</div>
-				<input type="tex" name=""> .
-				<input type="tex" name=""> .
-				<input type="tex" name=""> . 
-				<input type="tex" name="">
-			</div>
-
-			<br>
-
-			<div class="entire_row">
-				<div>Задание...</div>
-				<input type="tex" name=""> .
-				<input type="tex" name=""> .
-				<input type="tex" name=""> . 
-				<input type="tex" name="">
-			</div>
-
-			<br>
-
-			<div class="entire_row">
-				<div>Задание...</div>
-				<input type="tex" name=""> .
-				<input type="tex" name=""> .
-				<input type="tex" name=""> . 
-				<input type="tex" name="">
-			</div>
-
 		</div>
 		<div class="separator"></div>
 		<div class="both-row">
