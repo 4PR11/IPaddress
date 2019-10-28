@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 28, 2019 at 03:42 PM
+-- Generation Time: Oct 28, 2019 at 05:19 PM
 -- Server version: 5.5.41-log
 -- PHP Version: 5.3.29
 
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `LISTS` (
   `LI_ID` int(11) NOT NULL AUTO_INCREMENT,
   `ST_ID` int(11) NOT NULL,
   `WR_ID` int(11) NOT NULL,
+  `RATING` int(11) NOT NULL,
   PRIMARY KEY (`LI_ID`),
   KEY `WO_ID` (`WR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -61,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `LISTS` (
 
 CREATE TABLE IF NOT EXISTS `logs` (
   `LG_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NT_ID` int(11) DEFAULT NULL,
+  `WR_ID` int(11) DEFAULT NULL,
   `QUEST` varchar(300) DEFAULT NULL,
   `ANSWER` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`LG_ID`),
-  KEY `NT_ID` (`NT_ID`)
+  KEY `NT_ID` (`WR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -91,22 +92,6 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `NAME` int(11) DEFAULT NULL,
   PRIMARY KEY (`MO_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notes`
---
-
-CREATE TABLE IF NOT EXISTS `notes` (
-  `NT_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `WR_ID` int(11) DEFAULT NULL,
-  `RATING` int(11) DEFAULT NULL,
-  `MD_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`NT_ID`),
-  KEY `MD_ID` (`MD_ID`),
-  KEY `WR_ID` (`WR_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -191,10 +176,12 @@ CREATE TABLE IF NOT EXISTS `works` (
   `WO_ID` int(11) NOT NULL,
   `MO_ID` int(11) NOT NULL,
   `THEME` varchar(150) NOT NULL,
+  `MD_ID` int(11) NOT NULL,
   PRIMARY KEY (`WR_ID`),
   KEY `SB_ID` (`SB_ID`),
   KEY `WO_ID` (`WO_ID`),
-  KEY `MO_ID` (`MO_ID`)
+  KEY `MO_ID` (`MO_ID`),
+  KEY `MD_ID` (`MD_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
@@ -211,14 +198,7 @@ ALTER TABLE `LISTS`
 -- Constraints for table `logs`
 --
 ALTER TABLE `logs`
-  ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`NT_ID`) REFERENCES `notes` (`NT_ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Constraints for table `notes`
---
-ALTER TABLE `notes`
-  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`MD_ID`) REFERENCES `mods` (`MD_ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`WR_ID`) REFERENCES `works` (`WR_ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`WR_ID`) REFERENCES `works` (`WR_ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `students`
@@ -236,9 +216,10 @@ ALTER TABLE `WEIGHTS`
 -- Constraints for table `works`
 --
 ALTER TABLE `works`
-  ADD CONSTRAINT `works_ibfk_3` FOREIGN KEY (`MO_ID`) REFERENCES `modules` (`MO_ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `works_ibfk_4` FOREIGN KEY (`MD_ID`) REFERENCES `mods` (`MD_ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `works_ibfk_1` FOREIGN KEY (`SB_ID`) REFERENCES `subjects` (`SB_ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `works_ibfk_2` FOREIGN KEY (`WO_ID`) REFERENCES `workers` (`WO_ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `works_ibfk_2` FOREIGN KEY (`WO_ID`) REFERENCES `workers` (`WO_ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `works_ibfk_3` FOREIGN KEY (`MO_ID`) REFERENCES `modules` (`MO_ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
