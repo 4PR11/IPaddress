@@ -1,7 +1,5 @@
 <?php
 
-const FIRST_IP_BYTE = 10;
-
 class Ip
 {
 	private $bytes = array(0, 0, 0, 0);
@@ -59,7 +57,7 @@ class Ip
 	public function dec(){
 		$result = 0;
 		for ($i = 0; $i < 4 ; $i++) { 
-			$result .= (string)$this->bytes[$i] .'.';
+			$result .= ltrim((string)$this->bytes[$i], "0").'.';
 		}
 		return trim($result, '.');
 	}
@@ -67,7 +65,7 @@ class Ip
 	public function bin(){
 		$result = "";
 		for ($i = 0; $i < 4 ; $i++) {
-			$buff =(string)decbin($this->bytes[$i]);
+			$buff = (string)decbin($this->bytes[$i]);
 			$result .= substr('00000000', strlen($buff)).$buff.'.';
 		}
 		return trim($result, '.');
@@ -76,7 +74,7 @@ class Ip
 	public function hex() {
 		$result = "";
 		for ($i = 0; $i < 4 ; $i++) { 
-			$result .= (string)dechex($this->bytes[$i]) .'.';
+			$result .= ltrim((string)dechex($this->bytes[$i]), "0").'.';
 		}
 		return trim($result, '.');
 	}
@@ -160,7 +158,7 @@ class managerTask_Ip {
 
 	private function ipGen() {
 		$ip = new Ip(0, 0, 0, 0);
-		$ip->setByte(0, FIRST_IP_BYTE);
+		$ip->setByte(0, 10);
 		for ($i = 1; $i < 4; $i++) { 
 			$ip->setByte($i, rand(0, 255));
 		}
@@ -216,11 +214,11 @@ class managerTask_Ip {
 			} elseif ($op == 1) {
 				$task_str = $task->getIp()->hex().'<br>'. $task->getMask()->hex();
 			} elseif ($op == 2) {
-				$task_str = $task->getIp()->dec();
+				$task_str = ltrim($task->getIp()->dec(), "0");
 				$task_str .='/'.(string)substr_count($task->getMask()->bin(), '1');
 			} 
 			else {
-				$task_str = $task->getIp()->dec().'<br>'. $task->getMask()->dec();
+				$task_str = ltrim($task->getIp()->dec(), "0").'<br>'.ltrim($task->getMask()->dec(), "0");
 			}
 		}
 		return $task_str;
@@ -237,21 +235,21 @@ class managerTask_Ip {
 									   	'netNodesNum' => false
 									  )
 			);
-			$parser_buff = ipParser($data[$i]->netAddress);
+			$parsed = ParseIp($data[$i]->netAddress);
 			$right_net_address = $this->getTask($i)->netAddress(); 
-			$answers[$i]['netAddress'] = $parser_buff->equal($right_net_address);
+			$answers[$i]['netAddress'] = $parsed[0]->equal($right_net_address) || $parsed[1]->equal($right_net_address) || $parsed[2]->equal($right_net_address);
 
-			$parser_buff = ipParser($data[$i]->addressFirstHost);
+			$parsed = ParseIp($data[$i]->addressFirstHost);
 			$right_address_first_host = $this->getTask($i)->addressFirstHost(); 
-			$answers[$i]['addressFirstHost'] = $parser_buff->equal($right_address_first_host); 
+			$answers[$i]['addressFirstHost'] = $parsed[0]->equal($right_address_first_host) || $parsed[1]->equal($right_address_first_host) || $parsed[2]->equal($right_address_first_host); 
 
-			$parser_buff = ipParser($data[$i]->addressLastHost);
+			$parsed = ParseIp($data[$i]->addressLastHost);
 			$right_address_last_host = $this->getTask($i)->addressLastHost();  
-			$answers[$i]['addressLastHost'] = $parser_buff->equal($right_address_last_host);
+			$answers[$i]['addressLastHost'] = $parsed[0]->equal($right_address_last_host) || $parsed[1]->equal($right_address_last_host)|| $parsed[2]->equal($right_address_last_host) ;
 
-			$parser_buff = ipParser($data[$i]->broadcastAddress);
+			$parsed = ParseIp($data[$i]->broadcastAddress);
 			$right_broadcast_address = $this->getTask($i)->broadcastAddress();  
-			$answers[$i]['broadcastAddress'] = $parser_buff->equal($right_broadcast_address); 
+			$answers[$i]['broadcastAddress'] = $parsed[0]->equal($right_broadcast_address) || $parsed[1]->equal($right_broadcast_address) || $parsed[2]->equal($right_broadcast_address); 
 
 			$right_net_nodes_num = $this->getTask($i)->netNodesNum();  
 			$answers[$i]['netNodesNum'] = (integer)$data[$i]->netNodesNum == $right_net_nodes_num; 
@@ -260,27 +258,19 @@ class managerTask_Ip {
 	}
 }
 
-
-function ipParser($ip_str){
-	$ip = new Ip(0, 0, 0, 0);
-	$ip_str = preg_replace('/\s+/', '', $ip_str);
+function ParseIp($ip_str){
+	$ip = array(new Ip(0, 0, 0, 0), new Ip(0, 0, 0, 0), new Ip(0, 0, 0, 0));
+	$ip_str = mb_strtoupper(preg_replace('/\s+/', '', $ip_str));
 	$ip_str_array = preg_split('/[.]/', $ip_str);
-	if ($ip_str_array[0] == decbin(FIRST_IP_BYTE)) {
-	  	for ($i = 0; $i < 4 ; $i++) { 
-			$ip->setByte($i, bindec($ip_str_array[$i])) ;
-		}
-	} elseif ($ip_str_array[0] == dechex(FIRST_IP_BYTE)) {
-	   for ($i = 0; $i < 4 ; $i++) { 
-			$ip->setByte($i, hexdec($ip_str_array[$i]));
-		}
-	} else {
-		if (count($ip_str_array)<4){
-			for ($i = 0; $i < 4 ; $i++) { 
-				$ip->setByte($i, (int)$ip_str_array[$i]);
-			}
+	if (count($ip_str_array) == 4){
+		for ($i = 0; $i < 4 ; $i++) { 
+			$byte = $ip_str_array[$i];
+			$ip[0]->setByte($i, $byte);
+			$ip[1]->setByte($i, bindec($ip_str_array[$i])); 
+			$ip[2]->setByte($i, hexdec($ip_str_array[$i]));
 		}
 	}
-	 return $ip;
+	return $ip;
 }
 
 ?>
