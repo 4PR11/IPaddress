@@ -21,7 +21,7 @@
 	        <a class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link text-white" href="#">Карточка</a>
+	        <a class="nav-link text-white" href="./teacher.php">Карточка</a>
 	      </li>
 	    </ul>
 	    <a class="nav-link text-white" href="./login.php">Вход</a>

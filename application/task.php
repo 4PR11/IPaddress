@@ -4,7 +4,7 @@
 	<?php
 		include_once("./templates/base.php");
 		include("./templates/task.php");
-		 base_render_head();
+		base_render_head();
 	?>
 	<link rel="stylesheet" type="text/css" href="css/task.css">
 	<title>Задания</title>
