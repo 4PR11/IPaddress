@@ -13,7 +13,7 @@ body{
 }
 
 .theme-coulor{
-	background-color: #689AD3;
+	background-color: #09458d;
     color: #fff;
 }
 
@@ -70,7 +70,7 @@ body{
 #notify {
 		margin: 0 auto;
         background-color: #f45158;
-        width: 230px;
+        width: 500px;
         height: 50px;
         vertical-align: middle;
         color: #fff;

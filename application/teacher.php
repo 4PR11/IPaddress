@@ -54,32 +54,40 @@
 
                 <label for="theme-name">Выбирите тема</label>
                 <input id="theme-name" type="text" class="custom-text form-control mt-2">
+
+
+                <label for="work-date">Дата проведения</label>
+                <input id="work-date" type="date" class="form-control mt-2">
+
+                <input type="checkbox" id="big-check" class="mt-2">
+                <label for="big-check" class="no-date-lable">Без даты</label>
             </div>
 
-            <div class="col">
+            <div class="col right-block">
                 <p id="memberships">Участники</p>
                 <div class="form-control mt-2 ">
                     <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="memberships1">
-                    <label class="form-check-label" for="memberships1">
-                        Пример чекбоса
-                    </label>
+                        <input class="form-check-input" type="checkbox" value="" id="memberships1">
+                        <label class="form-check-label" for="memberships1">
+                            Пример чекбоса
+                        </label>
                     </div>
 
                     <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="memberships2">
-                    <label class="form-check-label" for="memberships2">
-                        Пример чекбоса
-                    </label>
+                        <input class="form-check-input" type="checkbox" value="" id="memberships2">
+                        <label class="form-check-label" for="memberships2">
+                            Пример чекбоса
+                        </label>
                     </div>
 
                     <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="memberships3">
-                    <label class="form-check-label" for="memberships3">
-                        Пример чекбоса
-                    </label>
+                        <input class="form-check-input" type="checkbox" value="" id="memberships3">
+                        <label class="form-check-label" for="memberships3">
+                            Пример чекбоса
+                        </label>
+                    </div>
                 </div>
-                </div>
+                <input type="submit" class="btn btn-primary add-btn" value="Добавить">
             </div>
             
         </div>

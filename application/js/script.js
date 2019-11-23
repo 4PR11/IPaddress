@@ -2,7 +2,7 @@ var input = document.getElementById('code-field');
 var form = document.getElementById('form');
 var mesElement = document.getElementById('notify');
 var w = 0;
-var phpDoc = 'Login.php';
+var phpDoc = './logics/StudentLogin.php';
 
 
 function logFrm(param){
@@ -11,11 +11,11 @@ function logFrm(param){
         case 0:
             $("#admin-login").css('display', 'block');
             $("#form-controllers").css('display', 'block');
-            phpDoc = 'LoginW.php';
+            phpDoc = './logics/WorkerLogin.php';
         break;
         case 1:
             $("#neadmin-login").css('display', 'block');
-            phpDoc = 'Login.php';
+            phpDoc = './logics/StudentLogin.php';
             $("#form-controllers").css('display', 'block');
         break;
         case 2:
@@ -29,29 +29,29 @@ function logFrm(param){
     }
 }
 
-
-$("#formLogin").submit(
-    function(event){
+var request;
+$("#formLogin").submit(function(event){
     event.preventDefault();
+    if (request) request.abort();
     var $form = $(this);
     var $inputs = $form.find("input, select, button, textarea");
     var serializedData = $form.serialize();
-    var request = $.ajax({
+    request = $.ajax({
         url: phpDoc,
         type: "post",
         data: serializedData,
-        success:
-        function(msg){
+        success:function(msg){
         if (msg == "") {
             mesElement.textContent   = 'Пользователь не найден';
-            mesElement.className    = 'alert alert-danger';
+            mesElement.className     = 'error';
+            mesElement.style.display = 'table-cell';
             input.className    = 'invalid animated shake';
         }else{
-           $(location).attr('href',"Quest.php");
+            $(location).attr('href',"main.php");
         }
       }
     });
-}); 
+});  
 
 
 
