@@ -23,7 +23,7 @@
                         <a class="nav-link text-white" href="./table.php">Назначенные КР</a>
                     </li>
                     </ul>
-
+                    <span class="name-of">Крутина О. М.</span>
                     <a class="btn btn-primary" href="./login.php">
                         Войти
                     </a>
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="separator"></div>
         <div class="row">
-            <form id="formWorkAddition">
+            <form class="row" id="formWorkAddition">
                 <div class="col">
                     <label for="subject-select">Выбирите предмет</label>
                     <select id="subject-select" class="custom-select">
@@ -74,7 +74,7 @@
                         ?>
                     </select>-->
                     <p id="memberships">Участники</p>
-                    <div class="form-control mt-2 ">
+                    <div class="form-control mt-2 scroll">
                         <div class="form-check">
                             <?php
                                 include_once("./templates/load_Students.php");     

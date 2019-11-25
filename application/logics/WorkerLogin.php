@@ -3,9 +3,14 @@
 	$pass = $_POST['pass'];
 	
 	$link =  mysqli_connect("localhost","root","","cygli");
-	$result = mysqli_query ($link,"SELECT WO_ID FROM WORKERS WHERE (LOGIN = '$login') AND (PASSWORD = '$pass')");
+	$result = mysqli_query ($link,"SELECT * FROM WORKERS WHERE (LOGIN = '$login')");
 
-	while( $row = mysqli_fetch_assoc($result) ){
-		echo $row["WO_ID"];
+	$row = mysqli_fetch_assoc($result)
+	if ($row["PASSWORD"] != ""){
+		
+	}
+
+	if ($result != ""){
+		echo "ВОШЕЛ";
 	}
 ?>

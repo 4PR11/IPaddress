@@ -31,3 +31,12 @@
     margin: 0px!important;
 }
 
+.scroll{
+    height: 268px;
+    overflow-y: scroll;
+}
+
+.add-btn{
+    margin-top: 10px!important;
+}
+

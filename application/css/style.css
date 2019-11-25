@@ -187,6 +187,14 @@ input::-webkit-inner-spin-button {
 	display: none;
 }
 
+.name-of{
+	margin-right: 10px!important;
+	padding: 5px;
+	background-color: #0069d9;
+	border-radius: 5px;
+	user-select: none;
+}
+
 .separator{
 	margin-bottom: 5px;
 	margin-top: 5px;
@@ -201,3 +209,8 @@ input::-webkit-inner-spin-button {
     background: linear-gradient(to right, rgba(9,69,141,1) 1%,rgba(196,213,228,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#09458d', endColorstr='#c4d5e4',GradientType=1);
 }
+
+.navbar-toggler-icon{
+	background-image: src('image/user.png');
+}
+

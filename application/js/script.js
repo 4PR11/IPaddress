@@ -11,7 +11,7 @@ function logFrm(param){
         case 0:
             $("#admin-login").css('display', 'block');
             $("#form-controllers").css('display', 'block');
-            phpDoc = './logics/WorkerLogin.php';
+            phpDoc = '/getUser';
         break;
         case 1:
             $("#neadmin-login").css('display', 'block');
@@ -41,13 +41,11 @@ $("#formLogin").submit(function(event){
         type: "post",
         data: serializedData,
         success:function(msg){
-        if (msg == "") {
+        if (msg == "error") {
             mesElement.textContent   = 'Пользователь не найден';
             mesElement.className     = 'error';
             mesElement.style.display = 'table-cell';
             input.className    = 'invalid animated shake';
-        }else{
-            $(location).attr('href',"main.php");
         }
       }
     });

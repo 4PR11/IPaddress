@@ -24,7 +24,8 @@
 	        <a class="nav-link text-white" href="./teacher.php">Карточка</a>
 	      </li>
 	    </ul>
-	    <a class="nav-link text-white" href="./login.php">Вход</a>
+		<span class="name-of"><?php $Current_User['name'] ?></span>
+	    <a class="btn btn-primary" href="./login.php"> Войти </a>
 	  </div>
 	</div>
 	</nav>
