@@ -37,7 +37,7 @@
             <form class="row" id="formWorkAddition">
                 <div class="col">
                     <label for="subject-select">Выбирите предмет</label>
-                    <select id="subject-select" class="custom-select">
+                    <select id="subject-select" name="subject-select" class="custom-select">
                         <option value="-2" disabled selected="">Выберите предмет</option>
                         <?php
                             include_once("./templates/load_Subjects.php");     
@@ -45,7 +45,7 @@
                     </select>
 
                     <label for="modul-select">Выбирите модуль</label>
-                    <select id="modul-select" class="custom-select">
+                    <select id="modul-select" name="modul-selects" class="custom-select">
                         <p class="font-weight-light">Light text.</p>
                         <option value="-2" disabled selected="">Выберите модуль</option>
                         <?php
@@ -54,11 +54,11 @@
                     </select>
 
                     <label for="theme-name">Выбирите тему</label>
-                    <input id="theme-name" type="text" class="custom-text form-control mt-2">
+                    <input id="theme-name" name="theme-name" type="text" class="custom-text form-control mt-2">
 
 
                     <label for="work-date">Дата проведения</label>
-                    <input id="work-date" type="date" class="form-control mt-2">
+                    <input id="work-date" name="work-date" type="date" value="" class="form-control mt-2">
 
                     <input type="checkbox" id="big-check" class="mt-2">
                     <label for="big-check" class="no-date-lable">Без даты</label>

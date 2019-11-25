@@ -11,11 +11,11 @@ function logFrm(param){
         case 0:
             $("#admin-login").css('display', 'block');
             $("#form-controllers").css('display', 'block');
-            phpDoc = '/getUser';
+            phpDoc = '/WorkerSignIn';
         break;
         case 1:
             $("#neadmin-login").css('display', 'block');
-            phpDoc = './logics/StudentLogin.php';
+            phpDoc = '/StudentSignIn';
             $("#form-controllers").css('display', 'block');
         break;
         case 2:
@@ -43,9 +43,11 @@ $("#formLogin").submit(function(event){
         success:function(msg){
         if (msg == "error") {
             mesElement.textContent   = 'Пользователь не найден';
-            mesElement.className     = 'error';
-            mesElement.style.display = 'table-cell';
-            input.className    = 'invalid animated shake';
+            mesElement.className     = 'alert alert-danger mt-3';
+            //mesElement.style.display = 'table-cell';
+            //input.className    = 'invalid animated shake';
+        } else{
+            window.location.replace("/");
         }
       }
     });
@@ -64,6 +66,10 @@ function CheckWork(){
         alert("тема не выбрана!");
         return false;
     }
+    if (document.getElementById('work-date').value == ""){
+        alert("дата не выбрана!");
+        return false;
+    }
     return true;
 }  
 
@@ -79,10 +85,10 @@ $("#formWorkAddition").submit(function(event){
         type: "post",
         data: serializedData,
         success:function(msg){
-        if (msg == "") {
-            alert(msg);
+        if (msg == "успех") {
+            alert("данные в базу загружены успешно");
         }else{
-            alert(msg);
+            alert("небольшие проблемочки...");
         }
       }
     });

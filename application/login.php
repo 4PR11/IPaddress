@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<!-- Сообщение об ощибке ввода -->
-		<div id="notify" class="alert d-none" role="alert"></div>
+		<div id="notify" class="d-none" role="alert"></div>
 		<form class="form-signin text-center" id="formLogin">
 			<img class="mb-4" src="image/qwyt_DjfX24.png" alt="" width="150" height="150">
 			<h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>

@@ -67,7 +67,7 @@ body{
 	margin: 0 auto;
 }
 
-#notify {
+/* #notify {
 		margin: 0 auto;
         background-color: #f45158;
         width: 500px;
@@ -75,13 +75,13 @@ body{
         vertical-align: middle;
         color: #fff;
 
-}
+} */
 
-#notify-cont{
+/* #notify-cont{
 	margin: 0 auto;
 	height: 50px;
 	width: 230px;
-}
+} */
 
 #answer-table{
 	margin: 0 auto;
@@ -213,4 +213,3 @@ input::-webkit-inner-spin-button {
 .navbar-toggler-icon{
 	background-image: src('image/user.png');
 }
-

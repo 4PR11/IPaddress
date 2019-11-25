@@ -18,14 +18,14 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <a class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>
+	        <!--<a id="" class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>-->
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link text-white" href="./teacher.php">Карточка</a>
+	        <a id="kartochka" class="nav-link text-white" href="./teacher.php">Карточка</a>
 	      </li>
 	    </ul>
-		<span class="name-of"><?php $Current_User['name'] ?></span>
-	    <a class="btn btn-primary" href="./login.php"> Войти </a>
+		<span class="name-of"><?php echo $GLOBALS['Current_User']["name"]; ?></span>
+	    <a class="btn btn-primary" href="/login"> Войти </a>
 	  </div>
 	</div>
 	</nav>
