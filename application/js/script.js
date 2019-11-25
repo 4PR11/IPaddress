@@ -51,8 +51,41 @@ $("#formLogin").submit(function(event){
         }
       }
     });
-});  
+});
 
+function CheckWork(){
+    if (document.getElementById('subject-select').value == "-2"){
+        alert("Предмет не выбран!");
+        return false;
+    }
+    if (document.getElementById('modul-select').value == "-2"){
+        alert("модуль не выбран!");
+        return false;
+    }
+    if (document.getElementById('theme-name').value == ""){
+        alert("тема не выбрана!");
+        return false;
+    }
+    return true;
+}  
 
-
-
+$("#formWorkAddition").submit(function(event){
+    event.preventDefault();
+    if (CheckWork() == false) return;
+    if (request) request.abort();
+    var $form = $(this);
+    var $inputs = $form.find("input, select, button, textarea");
+    var serializedData = $form.serialize();
+    request = $.ajax({
+        url: "./logics/InsertWork.php",
+        type: "post",
+        data: serializedData,
+        success:function(msg){
+        if (msg == "") {
+            alert(msg);
+        }else{
+            alert(msg);
+        }
+      }
+    });
+});
