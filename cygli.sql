@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 10 2019 г., 23:53
--- Версия сервера: 10.3.13-MariaDB
--- Версия PHP: 7.1.22
+-- Время создания: Ноя 25 2019 г., 11:44
+-- Версия сервера: 5.6.38
+-- Версия PHP: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,8 +49,7 @@ INSERT INTO `groups` (`GR_ID`, `NAME`) VALUES
 CREATE TABLE `lists` (
   `LI_ID` int(11) NOT NULL,
   `ST_ID` int(11) NOT NULL,
-  `WR_ID` int(11) NOT NULL,
-  `RATING` int(11) NOT NULL
+  `WR_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -137,7 +136,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`ST_ID`, `NAME`, `GR_ID`, `ADC`) VALUES
-(10, 'Игорь', 100, 'И0932');
+(10, 'Игорь', 100, 'И0932'),
+(11, 'Василий', 100, 'В0415');
 
 -- --------------------------------------------------------
 
@@ -317,7 +317,7 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT для таблицы `students`
 --
 ALTER TABLE `students`
-  MODIFY `ST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
