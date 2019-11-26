@@ -40,7 +40,7 @@
 						?>
 				</select>
 				<!-- Поле для ввода кода -->
-				<input class="form-control mt-2" type="text" placeholder="Номер сдуденческого билета" name="code" pattern="[а-яА-я]{1}[0-9]{4}">	
+				<input class="form-control mt-2" type="text" placeholder="Номер студенческого билета" name="code" pattern="[а-яА-я]{1}[0-9]{4}">	
 			</div>
 			<!-- Кнопка отправки данных -->
 			<div id="form-controllers" class="form-group">

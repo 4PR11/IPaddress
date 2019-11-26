@@ -3,10 +3,12 @@
 
 	\Slim\Slim::registerAutoloader();
 
+	session_start();
+
 	$app = new \Slim\Slim();
 	$GLOBALS['Current_User'] = array(
 		'isAnonimus' => true,
-		'name' => "Dima pidor",
+		'name' => "polzovatel",
 		'id' => "10"
 	); 
 
@@ -31,6 +33,13 @@
 	    }
 	);
 
+	$app->get(
+	    '/Student',
+	    function () {
+	        Include("Student.php");
+	    }
+	);
+
 	$app->post(
 	    '/WorkerSignIn',
 	    function () {
@@ -46,7 +55,9 @@
 				$Current_User["name"] = $row["NAME"];
 				$Current_User["id"] = $row["WO_ID"];
 
-				echo "МЫ ОТПРАВЛЯЕМСЯ";
+				$_SESSION["name"] = $row["NAME"];
+				$_SESSION["id"] = $row["WO_ID"];
+				$_SESSION["role"] = "0";
 			} else{
 				echo "error";
 			}
@@ -60,7 +71,7 @@
 			$code = $_POST['code'];
 			
 			$link =  mysqli_connect("localhost","root","","cygli");
-			$result = mysqli_query ($link,"SELECT * FROM STUDENTS S INNER JOIN GROUPS G ON (S.GR_ID = G.GR_ID) WHERE (S.GR_ID = '$group') AND (S.ADC = '$code')");
+			$result = mysqli_query ($link,"SELECT S.ST_ID, G.GR_ID, S.NAME FROM STUDENTS S INNER JOIN GROUPS G ON (S.GR_ID = G.GR_ID) WHERE (S.GR_ID = '$group') AND (S.ADC = '$code')");
 
 			$row = mysqli_fetch_assoc($result);
 			if (($row["GR_ID"] != "") && (strcmp($row["GR_ID"],$group)===0)){
@@ -68,7 +79,9 @@
 				$Current_User["name"] = $row["NAME"];
 				$Current_User["id"] = $row["ST_ID"];
 
-				echo "МЫ ОТПРАВЛЯЕМСЯ";
+				$_SESSION["name"] = $row["NAME"];
+				$_SESSION["id"] = $row["ST_ID"];
+				$_SESSION["role"] = "1";
 			} else{
 				echo "error";
 			}

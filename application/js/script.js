@@ -44,8 +44,6 @@ $("#formLogin").submit(function(event){
         if (msg == "error") {
             mesElement.textContent   = 'Пользователь не найден';
             mesElement.className     = 'alert alert-danger mt-3';
-            //mesElement.style.display = 'table-cell';
-            //input.className    = 'invalid animated shake';
         } else{
             window.location.replace("/");
         }
@@ -86,6 +84,7 @@ $("#formWorkAddition").submit(function(event){
         data: serializedData,
         success:function(msg){
         if (msg == "успех") {
+            alert(msg);
             alert("данные в базу загружены успешно");
         }else{
             alert("небольшие проблемочки...");

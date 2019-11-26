@@ -3,6 +3,7 @@
 <head>
     <?php
 		include("./templates/teacher.php");
+        include("./templates/CurUser.php");
 		teacher_render_head();
 	?>
     <title>Назначить работу</title>
@@ -17,16 +18,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>
+                        <!--<a class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>-->
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="./table.php">Назначенные КР</a>
                     </li>
                     </ul>
-                    <span class="name-of">Крутина О. М.</span>
-                    <a class="btn btn-primary" href="./login.php">
-                        Войти
-                    </a>
+                    <span class="name-of"><?php render_name(); ?></span>
+                    <a class="btn btn-primary" href="/login.php">Выйти</a>
                 </div>
             </div>
         </nav> 

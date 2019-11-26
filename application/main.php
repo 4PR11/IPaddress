@@ -3,6 +3,7 @@
 <head>
 	<?php
 		include("./templates/base.php");
+		include("./templates/CurUser.php");
 		base_render_head();
 	?>
 	<title>Главная</title>
@@ -20,12 +21,12 @@
 	      <li class="nav-item active">
 	        <!--<a id="" class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>-->
 	      </li>
-	      <li class="nav-item">
-	        <a id="kartochka" class="nav-link text-white" href="./teacher.php">Карточка</a>
-	      </li>
+	      <li class="nav-item"><?php render_kartochka(); ?></li>
 	    </ul>
-		<span class="name-of"><?php echo $GLOBALS['Current_User']["name"]; ?></span>
-	    <a class="btn btn-primary" href="/login"> Войти </a>
+		<span class="name-of"><?php render_name(); ?></span>
+	    <a class="btn btn-primary" href="/login">
+	    	<?php render_status($_SESSION["name"],"Выйти","Войти"); ?> 
+		</a>
 	  </div>
 	</div>
 	</nav>
