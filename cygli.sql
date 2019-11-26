@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 25 2019 г., 11:44
--- Версия сервера: 5.6.38
--- Версия PHP: 5.5.38
+-- Время создания: Ноя 26 2019 г., 17:49
+-- Версия сервера: 10.3.13-MariaDB
+-- Версия PHP: 7.1.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,6 +51,15 @@ CREATE TABLE `lists` (
   `ST_ID` int(11) NOT NULL,
   `WR_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `lists`
+--
+
+INSERT INTO `lists` (`LI_ID`, `ST_ID`, `WR_ID`) VALUES
+(4, 10, 13),
+(5, 11, 13),
+(6, 12, 13);
 
 -- --------------------------------------------------------
 
@@ -137,7 +146,8 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`ST_ID`, `NAME`, `GR_ID`, `ADC`) VALUES
 (10, 'Игорь', 100, 'И0932'),
-(11, 'Василий', 100, 'В0415');
+(11, 'Полозюйка', 100, 'П0678'),
+(12, 'Писарь', 100, 'И0865');
 
 -- --------------------------------------------------------
 
@@ -199,11 +209,11 @@ INSERT INTO `workers` (`WO_ID`, `NAME`, `PASSWORD`, `LOGIN`) VALUES
 CREATE TABLE `works` (
   `WR_ID` int(11) NOT NULL,
   `DATE` varchar(50) DEFAULT NULL,
-  `SB_ID` int(11) NOT NULL,
-  `WO_ID` int(11) NOT NULL,
-  `MO_ID` int(11) NOT NULL,
-  `THEME` varchar(150) NOT NULL,
-  `MD_ID` int(11) NOT NULL
+  `SB_ID` int(11) DEFAULT NULL,
+  `WO_ID` int(11) DEFAULT NULL,
+  `MO_ID` int(11) DEFAULT NULL,
+  `THEME` varchar(150) DEFAULT NULL,
+  `MD_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -211,7 +221,8 @@ CREATE TABLE `works` (
 --
 
 INSERT INTO `works` (`WR_ID`, `DATE`, `SB_ID`, `WO_ID`, `MO_ID`, `THEME`, `MD_ID`) VALUES
-(-1, NULL, -1, 30, 0, 'systemTheme', 2);
+(-1, NULL, -1, 30, 0, 'systemTheme', 2),
+(13, '2019-11-07', -1, 30, 0, 'hhbhb', 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -299,7 +310,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT для таблицы `lists`
 --
 ALTER TABLE `lists`
-  MODIFY `LI_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `LI_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `logs`
@@ -317,7 +328,7 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT для таблицы `students`
 --
 ALTER TABLE `students`
-  MODIFY `ST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
@@ -341,7 +352,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT для таблицы `works`
 --
 ALTER TABLE `works`
-  MODIFY `WR_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `WR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
