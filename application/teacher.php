@@ -33,7 +33,7 @@
     <div class="container">
         <div class="separator"></div>
         <div class="row">
-            <form class="row" id="formWorkAddition">
+            <form class="row row-margin-0" id="formWorkAddition">
                 <div class="col">
                     <label for="subject-select">Выбирите предмет</label>
                     <select id="subject-select" name="subject-select" class="custom-select">
@@ -86,6 +86,9 @@
         </div>
         </div>
     </div>
+    <?php
+	    teacher_render_footer();
+    ?>
     <script src="js/script.js"></script>    
 </body>
 </html>

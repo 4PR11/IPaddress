@@ -213,3 +213,7 @@ input::-webkit-inner-spin-button {
 .navbar-toggler-icon{
 	background-image: src('image/user.png');
 }
+
+.row-margin-0{
+	margin: 0px!important;
+}
