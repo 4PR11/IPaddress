@@ -64,7 +64,7 @@ function CheckWork(){
         alert("тема не выбрана!");
         return false;
     }
-    if (document.getElementById('work-date').value == ""){
+    if ((document.getElementById('work-date').value == "") && ($("#big-check").prop('checked') == false)){
         alert("дата не выбрана!");
         return false;
     }
@@ -76,18 +76,135 @@ $("#formWorkAddition").submit(function(event){
     if (CheckWork() == false) return;
     if (request) request.abort();
     var $form = $(this);
-    var $inputs = $form.find("input, select, button, textarea");
+    var $inputs = $form.find("input, select, button, label, textarea");
     var serializedData = $form.serialize();
     request = $.ajax({
-        url: "./logics/InsertWork.php",
+        url: "/InsertWork",
         type: "post",
         data: serializedData,
         success:function(msg){
-        if (msg == "успех") {
-            alert(msg);
+        if (msg == "success_status") {
             alert("данные в базу загружены успешно");
+            window.location.reload();
         }else{
+            alert(msg);
             alert("небольшие проблемочки...");
+        }
+      }
+    });
+});
+
+function CheckSubject(){
+    if (document.getElementById('subject-name').value == ""){
+        alert("Не указано название предмета!");
+        return false;
+    }
+    return true;
+}
+
+$("#SubjectAddition").submit(function(event){
+    event.preventDefault();
+    if (CheckSubject() == false) return;
+    if (request) request.abort();
+    var $form = $(this);
+    var $inputs = $form.find("input, select, button, textarea");
+    var serializedData = $form.serialize();
+    request = $.ajax({
+        url: "./logics/InsertSubject.php",
+        type: "post",
+        data: serializedData,
+        success:function(msg){
+        if (msg == "error_is_alredy") {
+            alert("Такой предмет уже существует");
+        }
+
+        if (msg == "success_status") {
+            alert("Данные в базу добавлены успешно");
+            window.location.reload();
+        }
+
+        if (msg == "") {
+            alert("Проблемы с добавлением в информации в базу");
+        }
+      }
+    });
+});
+
+function CheckGroup(){
+    if (document.getElementById('group-name').value == ""){
+        alert("Не указано название группы!");
+        return false;
+    }
+    return true;
+}
+
+$("#GroupAddition").submit(function(event){
+    event.preventDefault();
+    if (CheckGroup() == false) return;
+    if (request) request.abort();
+    var $form = $(this);
+    var $inputs = $form.find("input, select, button, textarea");
+    var serializedData = $form.serialize();
+    request = $.ajax({
+        url: "./logics/InsertGroup.php",
+        type: "post",
+        data: serializedData,
+        success:function(msg){
+        if (msg == "error_is_alredy") {
+            alert("Такая группа уже существует");
+        }
+
+        if (msg == "success_status") {
+            alert("Данные в базу добавлены успешно");
+            window.location.reload();
+        }
+
+        if (msg == "") {
+            alert("Проблемы с добавлением в информации в базу");
+        }
+      }
+    });
+});
+
+function CheckStudent(){
+    if (document.getElementById('student-name').value == ""){
+        alert("Не указано ФИО студента!");
+        return false;
+    }
+    if (document.getElementById('group').value == "-2"){
+        alert("группа не выбрана!");
+        return false;
+    }
+    if (document.getElementById('code-name').value == ""){
+        alert("Не указан номер студенческого билета!");
+        return false;
+    }
+    return true;
+}
+
+$("#StudentAddition").submit(function(event){
+    event.preventDefault();
+    if (CheckStudent() == false) return;
+    if (request) request.abort();
+    var $form = $(this);
+    var $inputs = $form.find("input, select, button, textarea");
+    var serializedData = $form.serialize();
+    request = $.ajax({
+        url: "./logics/InsertStudent.php",
+        type: "post",
+        data: serializedData,
+        success:function(msg){
+        if (msg == "error_is_alredy") {
+            alert("Указан уже существующий номер студенческого билета!");
+        }
+
+        if (msg == "success_status") {
+            alert("Данные в базу добавлены успешно");
+            window.location.reload();
+        }
+
+        if (msg == "") {
+            alert("Проблемы с добавлением в информации в базу");
         }
       }
     });

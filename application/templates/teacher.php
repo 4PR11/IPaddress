@@ -9,7 +9,10 @@
 			<link rel="stylesheet" type="text/css" href="css/teacher.css">
 			<script src="js/jquery-3.4.1.min.js"></script>	
 			<script src="js/popper.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>'
+			<script src="js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="js/datatables.css"/>
+		    <script type="text/javascript" src="js/datatables.js"></script>
+		    <script src="js/tableController.js"></script>'
 		);
 	}
 
@@ -19,19 +22,17 @@
 			<div class="row top-row">
 				  <div class="col-lg-4 text-center"></div>
 				  <div class="col-lg-4 text-center"></div>
-				  <div class="col-lg-4 text-center"></div>
-				  <input type="button" value="" name="sing-in-btn"></div>
+				  <div class="col-lg-4 text-center"><input type="button" value="" name="sing-in-btn"></div>
 			</div>
 		</div>'
 		);
 	}
 
 	function teacher_render_footer(){
-		echo(
-			'<footer class="footer">
+		echo('<footer class="footer">
 		      <div class="container">
 			        <a href="http://www.rpcollege.ru/">
-			        	<p class="text-muted text-center">©Полиграф Мир 2017-2018</p>
+			        	<p class="text-muted text-center">©Полиграф Мир 2019-2020</p>
 			        </a>
 		      </div>
 		    </footer>');

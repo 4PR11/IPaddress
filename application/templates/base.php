@@ -17,11 +17,10 @@
 	}
 
 	function base_render_footer(){
-		echo(
-			'<footer class="footer">
+		echo('<footer class="footer">
 		      <div class="container">
 			        <a href="http://www.rpcollege.ru/">
-			        	<p class="text-muted text-center">©Полиграф Мир 2017-2018</p>
+			        	<p class="text-muted text-center">©Полиграф Мир 2019-2020</p>
 			        </a>
 		      </div>
 		    </footer>');

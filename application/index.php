@@ -6,11 +6,6 @@
 	session_start();
 
 	$app = new \Slim\Slim();
-	$GLOBALS['Current_User'] = array(
-		'isAnonimus' => true,
-		'name' => "polzovatel",
-		'id' => "10"
-	); 
 
 	$app->get(
 	    '/login',
@@ -41,6 +36,13 @@
 	);
 
 	$app->post(
+	    '/InsertWork',
+	    function () {
+	        Include("./logics/InsertWork.php");
+	    }
+	);
+
+	$app->post(
 	    '/WorkerSignIn',
 	    function () {
 	        $login = $_POST['Lgn'];
@@ -51,10 +53,6 @@
 
 			$row = mysqli_fetch_assoc($result);
 			if (($row["PASSWORD"] != "") && (strcmp($row["PASSWORD"],$pass)===0)){
-				$Current_User["isAnonimus"] = false;
-				$Current_User["name"] = $row["NAME"];
-				$Current_User["id"] = $row["WO_ID"];
-
 				$_SESSION["name"] = $row["NAME"];
 				$_SESSION["id"] = $row["WO_ID"];
 				$_SESSION["role"] = "0";
@@ -75,10 +73,6 @@
 
 			$row = mysqli_fetch_assoc($result);
 			if (($row["GR_ID"] != "") && (strcmp($row["GR_ID"],$group)===0)){
-				$Current_User["isAnonimus"] = false;
-				$Current_User["name"] = $row["NAME"];
-				$Current_User["id"] = $row["ST_ID"];
-
 				$_SESSION["name"] = $row["NAME"];
 				$_SESSION["id"] = $row["ST_ID"];
 				$_SESSION["role"] = "1";

@@ -13,6 +13,7 @@
 			echo "<br/>";
 			$i++;
 		}
+		echo ('<input id="theme-name" name="StudentCount" type="text" class="d-none" value = "'.$i.'">');
 		mysqli_free_result($result);
 	}
 	mysqli_close($db);
