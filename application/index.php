@@ -50,13 +50,43 @@
 	);
 
 	$app->post(
+	    '/DeleteWork',
+	    function () {
+	        $db = mysqli_connect("localhost","root","","cygli");
+
+			if ($result = mysqli_query($db, "DELETE FROM works WHERE (WR_ID = ".$_POST['id'].")"))
+			{
+				echo "success";
+			}
+			mysqli_close($db);
+	    }
+	);
+
+	$app->post(
+	    '/GetStudentList',
+	    function (){
+			$db = mysqli_connect("localhost","root","","cygli");
+
+			if ($result = mysqli_query($db, "SELECT DISTINCT S.NAME FROM lists L INNER JOIN works W ON (W.WR_ID = L.WR_ID) INNER JOIN students S ON (L.ST_ID = S.ST_ID) WHERE (L.WR_ID = ".$_POST['id'].")"))
+			{
+				while($myrow = mysqli_fetch_assoc($result)) {
+					echo ($myrow["NAME"]);
+					echo "\n";
+				}
+				mysqli_free_result($result);
+			}
+			mysqli_close($db);
+	    }
+	);
+
+	$app->post(
 	    '/LoadTheme',
 	    function () {
 	    	$root = $_SERVER['DOCUMENT_ROOT'];
 			include($root."/logics/constants.php");
 
 			$link = mysqli_connect(type,db_login,db_password, db_name);
-			if ($result = mysqli_query($link,"SELECT * FROM works WHERE (WR_ID = ".$_SESSION["wr_id"].")")){
+			if ($result = mysqli_query($link,"SELECT * FROM works WHERE (WR_ID = ".$_SESSION['wr_id'].")")){
 				$row = mysqli_fetch_assoc($result);
 				echo $row["THEME"];
 			} else {
@@ -96,15 +126,6 @@
 				array_push($taskList, $manager->getTaskStr($i));
 			}
 		    $_SESSION["ip"] = $taskList;
-	    }
-	);
-
-	$app->post(
-	    '/LogOut',
-	    function () {
-	        session_unset();
-	        session_destroy();
-	        echo "succes_status";
 	    }
 	);
 

@@ -3,7 +3,7 @@
 	include($root."/logics/constants.php");
 
 	$db = mysqli_connect(type,db_login,db_password, db_name);
-	$result = mysqli_query ($db,'SELECT W.DATE, W.THEME, S.NAME AS "SBNAME", WO.NAME AS "WONAME", M.NAME AS "MONAME" FROM works W INNER JOIN subjects S ON (W.SB_ID = S.SB_ID) INNER JOIN workers WO ON (WO.WO_ID = W.WO_ID) INNER JOIN modules M ON (M.MO_ID = W.MO_ID)');
+	$result = mysqli_query ($db,'SELECT W.WR_ID, W.DATE, W.THEME, S.NAME AS "SBNAME", WO.NAME AS "WONAME", M.NAME AS "MONAME" FROM works W INNER JOIN subjects S ON (W.SB_ID = S.SB_ID) INNER JOIN workers WO ON (WO.WO_ID = W.WO_ID) INNER JOIN modules M ON (M.MO_ID = W.MO_ID)');
 
 echo '<table class="table" id="curWorksTable">'.
 		'<thead>'.
@@ -28,8 +28,8 @@ echo '<table class="table" id="curWorksTable">'.
 				 	'<td>'.$row["WONAME"].'</td>'.
 				 	'<td>'.$row["MONAME"].'</td>'.
 				 	'<td>'.$row["THEME"].'</td>'.
-				 	'<td>Удаление</td>'.
-				 	'<td>Список участников</td>'.
+				 	'<td><input type="button" class="btn btn-primary" value="Удалить" onclick="DeleteWork('.$row[WR_ID].');"></td>'.
+				 	'<td><input type="button" class="btn btn-primary" value="Список" onclick="GetStuList('.$row[WR_ID].');"></td>'.
 				 '</tr>';
 			$i++;
 		}
