@@ -22,6 +22,13 @@
 	);
 
 	$app->get(
+	    '/task',
+	    function () {
+	        Include_once("task.php");
+	    }
+	);
+
+	$app->get(
 	    '/teacher',
 	    function () {
 	        Include("teacher.php");
@@ -43,6 +50,68 @@
 	);
 
 	$app->post(
+	    '/LoadTheme',
+	    function () {
+	    	$root = $_SERVER['DOCUMENT_ROOT'];
+			include($root."/logics/constants.php");
+
+			$link = mysqli_connect(type,db_login,db_password, db_name);
+			if ($result = mysqli_query($link,"SELECT * FROM works WHERE (WR_ID = ".$_SESSION["wr_id"].")")){
+				$row = mysqli_fetch_assoc($result);
+				echo $row["THEME"];
+			} else {
+				echo $_SESSION["wr_id"];
+			}
+	    }
+	);
+
+	$app->post(
+	    '/LoadWorks',
+	    function () {
+	        $root = $_SERVER['DOCUMENT_ROOT'];
+			include($root."/logics/constants.php");
+
+			$db = mysqli_connect(type,db_login,db_password, db_name);
+			$sql = "SELECT W.WR_ID, W.THEME FROM works W INNER JOIN lists L on (W.WR_ID = L.WR_ID) WHERE (L.ST_ID = ".$_SESSION['id'].")";
+			if ($result = mysqli_query($db, $sql))
+			{
+				echo "<option value='-2' disabled selected=''>Выберите работу</option>";
+				while($myrow = mysqli_fetch_assoc($result)) {
+					echo ('<option value ="'.$myrow['WR_ID'].'">'.$myrow['THEME'].'</option>');
+				}
+				mysqli_free_result($result);
+			}
+			mysqli_close($db);
+	    }
+	);
+
+	$app->post(
+	    '/SetWork',
+	    function () {
+	        $_SESSION["wr_id"] = $_POST['work-select'];
+	        echo $_SESSION["wr_id"];
+	    }
+	);
+
+	$app->post(
+	    '/LogOut',
+	    function () {
+	        session_unset();
+	        session_destroy();
+	        echo "succes_status";
+	    }
+	);
+
+	$app->post(
+	    '/LogOut',
+	    function () {
+	        session_unset();
+	        session_destroy();
+	        echo "succes_status";
+	    }
+	);
+
+	$app->post(
 	    '/WorkerSignIn',
 	    function () {
 	        $login = $_POST['Lgn'];
@@ -59,6 +128,7 @@
 			} else{
 				echo "error";
 			}
+			mysqli_close($link);
 	    }
 	);
 
@@ -79,6 +149,7 @@
 			} else{
 				echo "error";
 			}
+			mysqli_close($link);
 	    }
 	);
 

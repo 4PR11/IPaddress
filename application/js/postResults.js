@@ -4,7 +4,7 @@ var now_num_task = 1; // текущее задание
 function NextTask(){
 	getData();
 	var task_request = new XMLHttpRequest(); // делаем аякс запрос
-	task_request.open('POST', 'task sender.php', true);
+	task_request.open('POST', './logics/task sender.php', true);
 	task_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	task_request.addEventListener("readystatechange", () => {
     if (task_request.readyState === 4 && task_request.status === 200) {
@@ -46,7 +46,7 @@ function pushResult(){
 	var xhr = new XMLHttpRequest();
 	var js ="dat="+JSON.stringify(data);
 	xhr.responseType =	"json";
-	xhr.open('POST', 'task inspector.php', true);
+	xhr.open('POST', './logics/task inspector.php', true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState === 4 && xhr.status === 200) {

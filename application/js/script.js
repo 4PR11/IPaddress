@@ -29,6 +29,41 @@ function logFrm(param){
     }
 }
 
+function logOut(){
+     $.ajax({
+        url: '/LogOut',
+        type: "post",
+        data: "",
+        success:function(msg){
+            if (msg == "succes_status") {
+                window.location.replace("/login");  
+            }
+        }
+    });
+}
+
+function loadWorks(){
+    $.ajax({
+        url: '/LoadWorks',
+        type: "post",
+        data: "",
+        success:function(msg){
+        $('#work-select').html(msg);
+      }
+    });
+}
+
+function GetTheme(){
+    $.ajax({
+        url: '/LoadTheme',
+        type: "post",
+        data: "",
+        success:function(msg){
+        $('#theme').html(msg);
+      }
+    });
+}
+
 var request;
 $("#formLogin").submit(function(event){
     event.preventDefault();
@@ -207,5 +242,30 @@ $("#StudentAddition").submit(function(event){
             alert("Проблемы с добавлением в информации в базу");
         }
       }
+    });
+});
+
+function CheckChoisedWork(){
+    if (document.getElementById('work-select').value == "-2"){
+        alert("работа не выбрана!");
+        return false;
+    }
+    return true;
+}
+
+$("#ChoiseWork").submit(function(event){
+    event.preventDefault();
+    if (CheckChoisedWork() == false) return;
+    if (request) request.abort();
+    var $form = $(this);
+    var $inputs = $form.find("input, select, button, textarea");
+    var serializedData = $form.serialize();
+    request = $.ajax({
+        url: "/SetWork",
+        type: "post",
+        data: serializedData,
+        success:function(msg){
+            window.location.replace("/task");
+        }
     });
 });

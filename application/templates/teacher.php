@@ -12,7 +12,8 @@
 			<script src="js/bootstrap.min.js"></script>
 			<link rel="stylesheet" type="text/css" href="js/datatables.css"/>
 		    <script type="text/javascript" src="js/datatables.js"></script>
-		    <script src="js/tableController.js"></script>'
+		    <script src="js/tableController.js"></script>
+		    <script src="js/script.js"></script>'
 		);
 	}
 
@@ -22,7 +23,8 @@
 			<div class="row top-row">
 				  <div class="col-lg-4 text-center"></div>
 				  <div class="col-lg-4 text-center"></div>
-				  <div class="col-lg-4 text-center"><input type="button" value="" name="sing-in-btn"></div>
+				  <div class="col-lg-4 text-center"></div>
+				  <input type="button" value="" name="sing-in-btn"></div>
 			</div>
 		</div>'
 		);

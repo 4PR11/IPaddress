@@ -18,15 +18,10 @@
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <!--<a id="" class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>-->
-	      </li>
 	      <li class="nav-item"><?php render_kartochka(); ?></li>
 	    </ul>
 		<span class="name-of"><?php render_name(); ?></span>
-	    <a class="btn btn-primary" href="/login">
-	    	<?php render_status($_SESSION["name"],"Выйти","Войти"); ?> 
-		</a>
+	    <?php log_out_btn(); ?>
 	  </div>
 	</div>
 	</nav>
@@ -35,7 +30,7 @@
 		<h3 class="text-center mt-3">Список заданий для тренировки</h3>
 		<div class="separator"></div>
 		<div class="list-group mt-3 mb-3">
-		  <a id="myInput" href="./task.php?&id=123" class="list-group-item list-group-item-action">Маршрутизация</a>
+		  <a id="myInput" href="/task" class="list-group-item list-group-item-action">Маршрутизация</a>
 		  <a href="#" class="list-group-item list-group-item-action disabled">[Закрыто]</a>
 		  <a href="#" class="list-group-item list-group-item-action disabled">[Закрыто]</a>
 		  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">[Закрыто]</a>

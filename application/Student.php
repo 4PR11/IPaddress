@@ -17,12 +17,10 @@
             </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <!--<a class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>-->
-                    </li>
+                    <li class="nav-item"><a id='kartochka' class='nav-link text-white' href='/'>На главную</a></li>
                     </ul>
                     <span class="name-of"><?php render_name(); ?></span>
-                    <a class="btn btn-primary" href="./login.php">Выйти</a>
+                    <?php log_out_btn(); ?>
                 </div>
             </div>
         </nav> 
@@ -30,28 +28,32 @@
     <div class="container">
         <div class="separator"></div>
         <div class="row">
-            <div class="col">
-                <form action="#">
-
-                    <label for="subject-id">Выберете предмет</label>
-                    <select class="custom-select" name="" id="subject-id">
-                    </select>
+            <div class="col-2"></div>
+            <div class="col-8">
+                <form id="ChoiseWork">
+                    <!--<label for="subject-select">Выберите предмет</label>
+                    <select id="subject-select" name="subject-select" class="custom-select">
+                        <option value="-2" disabled selected="">Выберите предмет</option>
+                        <?php
+                    //      include_once("./templates/load_Subjects.php");     
+                        ?>
+                    </select>-->
 
                     <label for="work-id">Выберете работу</label>
-                    <select class="custom-select" name="" id="work-id">
+                    <select id="work-select" name="work-select" class="custom-select">
+                        <script type="text/javascript">loadWorks();</script>
                     </select>
 
-                    <label for="mode-id">Выберете режим</label>
+                    <!--<label for="mode-id">Выберете режим</label>
                     <select class="custom-select" name="" id="mode-id">
-                    </select>
+                    </select>-->
 
                     <input class="btn btn-primary add-btn" type="submit" value="Начать">
                 </form>
             </div>
+            <div class="col-2"></div>
         </div>
     </div>
-
-
     <script src="js/script.js"></script>    
 </body>
 </html>

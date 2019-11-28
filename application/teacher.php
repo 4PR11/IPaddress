@@ -17,15 +17,10 @@
             </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <!--<a class="nav-link text-white" href="#">Задания<span class="sr-only">(current)</span></a>-->
-                    </li>
-                    <li class="nav-item active">
-                        <!--<a class="nav-link text-white" href=""></a>-->
-                    </li>
+                    <li class="nav-item"><a id='kartochka' class='nav-link text-white' href='/'>На главную</a></li>
                     </ul>
                     <span class="name-of"><?php render_name(); ?></span>
-                    <a class="btn btn-primary" href="/login.php">Выйти</a>
+                    <?php log_out_btn(); ?>
                 </div>
             </div>
         </nav> 
@@ -34,11 +29,11 @@
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <!--<h3><span class="badge badge-info margin10">Библиотека</span></h3>-->
-            <a class="nav-item nav-link active" id="nav-worksAdd-tab" data-toggle="tab" href="#nav-worksAdd" role="tab" aria-selected="true" onclick="">Создание работ</a>
-            <a class="nav-item nav-link" id="nav-SubAdd-tab" data-toggle="tab" href="#nav-SubAdd" role="tab"  aria-selected="false" onclick="">Добавление предметов</a>
-            <a class="nav-item nav-link" id="nav-StuAdd-tab" data-toggle="tab" href="#nav-StuAdd" role="tab"  aria-selected="false" onclick="">Добавление студентов</a>
-            <a class="nav-item nav-link" id="nav-GrAdd-tab" data-toggle="tab" href="#nav-GrAdd" role="tab"  aria-selected="false" onclick="">Создание группы</a>
-            <a class="nav-item nav-link" id="nav-CurWorks-tab" data-toggle="tab" href="#nav-CurWorks" role="tab"  aria-selected="false" onclick="">Назначенные КР</a>
+            <a class="nav-item nav-link active" id="nav-worksAdd-tab" data-toggle="tab" href="#nav-worksAdd" role="tab" aria-selected="true">Создание работ</a>
+            <a class="nav-item nav-link" id="nav-SubAdd-tab" data-toggle="tab" href="#nav-SubAdd" role="tab"  aria-selected="false" >Добавление предметов</a>
+            <a class="nav-item nav-link" id="nav-StuAdd-tab" data-toggle="tab" href="#nav-StuAdd" role="tab"  aria-selected="false">Добавление студентов</a>
+            <a class="nav-item nav-link" id="nav-GrAdd-tab" data-toggle="tab" href="#nav-GrAdd" role="tab"  aria-selected="false">Создание группы</a>
+            <a class="nav-item nav-link" id="nav-CurWorks-tab" data-toggle="tab" href="#nav-CurWorks" role="tab"  aria-selected="false">Назначенные КР</a>
 
          </div>
     </nav>
@@ -47,9 +42,9 @@
         <div class="separator"></div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-worksAdd" role="tabpanel" aria-labelledby="nav-worksAdd-tab">
-                <form class="row" id="formWorkAddition">
+                <form class="row row-margin-0" id="formWorkAddition">
                     <div class="col">
-                        <label for="subject-select">Выбирите предмет</label>
+                        <label for="subject-select">Выберите предмет</label>
                         <select id="subject-select" name="subject-select" class="custom-select">
                             <option value="-2" disabled selected="">Выберите предмет</option>
                             <?php
@@ -155,6 +150,9 @@
         </div>
         </div>
     </div>
+    <?php
+        teacher_render_footer();
+    ?>
     <script src="js/script.js"></script>    
 </body>
 </html>
