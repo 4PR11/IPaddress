@@ -26,19 +26,20 @@
         </nav> 
     </div>
 
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <!--<h3><span class="badge badge-info margin10">Библиотека</span></h3>-->
-            <a class="nav-item nav-link active" id="nav-worksAdd-tab" data-toggle="tab" href="#nav-worksAdd" role="tab" aria-selected="true">Создание работ</a>
-            <a class="nav-item nav-link" id="nav-SubAdd-tab" data-toggle="tab" href="#nav-SubAdd" role="tab"  aria-selected="false" >Добавление предметов</a>
-            <a class="nav-item nav-link" id="nav-StuAdd-tab" data-toggle="tab" href="#nav-StuAdd" role="tab"  aria-selected="false">Добавление студентов</a>
-            <a class="nav-item nav-link" id="nav-GrAdd-tab" data-toggle="tab" href="#nav-GrAdd" role="tab"  aria-selected="false">Создание группы</a>
-            <a class="nav-item nav-link" id="nav-CurWorks-tab" data-toggle="tab" href="#nav-CurWorks" role="tab"  aria-selected="false">Назначенные КР</a>
-
-         </div>
-    </nav>
+    
 
     <div class="container">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <!--<h3><span class="badge badge-info margin10">Библиотека</span></h3>-->
+                <a class="nav-item nav-link active" id="nav-worksAdd-tab" data-toggle="tab" href="#nav-worksAdd" role="tab" aria-selected="true">Создание работ</a>
+                <a class="nav-item nav-link" id="nav-SubAdd-tab" data-toggle="tab" href="#nav-SubAdd" role="tab"  aria-selected="false" >Добавление предметов</a>
+                <a class="nav-item nav-link" id="nav-StuAdd-tab" data-toggle="tab" href="#nav-StuAdd" role="tab"  aria-selected="false">Добавление студентов</a>
+                <a class="nav-item nav-link" id="nav-GrAdd-tab" data-toggle="tab" href="#nav-GrAdd" role="tab"  aria-selected="false">Создание группы</a>
+                <a class="nav-item nav-link" id="nav-CurWorks-tab" data-toggle="tab" href="#nav-CurWorks" role="tab"  aria-selected="false">Назначенные КР</a>
+
+             </div>
+        </nav>
         <div class="separator"></div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-worksAdd" role="tabpanel" aria-labelledby="nav-worksAdd-tab">
