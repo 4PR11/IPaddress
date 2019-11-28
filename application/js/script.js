@@ -29,6 +29,37 @@ function logFrm(param){
     }
 }
 
+function GetStuList(wr_id){
+    $.ajax({
+        url: '/GetStudentList',
+        type: "post",
+        data: { id: wr_id },
+        success:function(msg){
+            if (msg == ""){
+                alert("Ни одного участника работы");
+            } else {
+                alert(msg);
+            }
+      }
+    });
+}
+
+function DeleteWork(wr_id){
+    $.ajax({
+        url: '/DeleteWork',
+        type: "post",
+        data: { id: wr_id },
+        success:function(msg){
+            if (msg == "success"){
+                alert("работа удалена успешно");
+                window.location.reload();
+            } else {
+                alert("проблемы с удалением");
+            }     
+      }
+    }); 
+}
+
 function logOut(){
      $.ajax({
         url: '/LogOut',

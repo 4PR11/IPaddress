@@ -1,5 +1,6 @@
 <?php
 	$root = $_SERVER['DOCUMENT_ROOT'];
+	echo $root;
 	include($root."/logics/constants.php");
 
 	$db = mysqli_connect(type,db_login,db_password, db_name);
