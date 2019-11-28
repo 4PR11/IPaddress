@@ -3,21 +3,19 @@
 <head>
 	<?php
 		include("Gens/Gens.php");
-		session_start();
 		include_once("./templates/base.php");
 		include("./templates/task.php");
 		include("./templates/CurUser.php");
 		base_render_head();
-		
-		const TASK_NUM = 3; // колво заданий
+
+		const TASK_NUM = 3;
 	    const TASK_NAME = "ip";
-	    echo "<script type='text/javascript'> const TASKS_NUM = ".TASK_NUM."; const TASK_NAME = 'ip';</script>"; // передаем ещё в яву скрипт
-		if (!isset($_SESSION[TASK_NAME])) {
-	        $manager = new managerTask_Ip(4); 
-	        $_SESSION[TASK_NAME] = $manager; 
-		} else {
-	        $manager = $_SESSION[TASK_NAME];    
-	    }
+	    echo "<script type='text/javascript'> const TASKS_NUM = ".TASK_NUM."; const TASK_NAME = 'ip';</script>";
+
+	    if (isset($_SESSION[TASK_NAME])) {
+	        $manager = $_SESSION[TASK_NAME];
+	        //print_r($manager); 
+		}
 	?>
 	<link rel="stylesheet" type="text/css" href="css/task.css">
 	<title>Задания</title>

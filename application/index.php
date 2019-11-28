@@ -89,7 +89,13 @@
 	    '/SetWork',
 	    function () {
 	        $_SESSION["wr_id"] = $_POST['work-select'];
+
+			include("Gens/Gens.php");
+			$manager = new managerTask_Ip(4);
+		    $_SESSION["ip"] = $manager;
+
 	        echo $_SESSION["wr_id"];
+	        echo $manager->getTaskStr(0);
 	    }
 	);
 

@@ -13,9 +13,9 @@
 
 	function log_out_btn(){
 		if ($_SESSION["name"] != "")
-			echo "<input type='button' class='btn btn-primary' value='Выйти' onclick='logOut()'>";
+			echo "<input type='button' class='btn btn-primary add-btn' value='Выйти' onclick='logOut()'>";
 		else 
-			echo "<input type='button' class='btn btn-primary' value='Войти' onclick='logOut()'>";
+			echo "<input type='button' class='btn btn-primary add-btn' value='Войти' onclick='logOut()'>";
 	}
 
 	function render_kartochka(){
