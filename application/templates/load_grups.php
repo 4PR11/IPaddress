@@ -1,7 +1,5 @@
 <?php
-	$root = $_SERVER['DOCUMENT_ROOT'];
-	include($root."/logics/constants.php");
-
+	include("./logics/constants.php");
 	$db = mysqli_connect(type,db_login,db_password, db_name);
 	$sql = "SELECT GR_ID, NAME FROM GROUPS";
 	if ($result = mysqli_query($db, $sql))

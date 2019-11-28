@@ -4,36 +4,35 @@ var now_num_task = 1; // текущее задание
 function NextTask(){
 	getData();
 	var task_request = new XMLHttpRequest(); // делаем аякс запрос
-	task_request.open('POST', './logics/task sender.php', true);
+	task_request.open('POST', './task/'+(now_num_task+1), true);
 	task_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	task_request.addEventListener("readystatechange", () => {
     if (task_request.readyState === 4 && task_request.status === 200) {
-    	updateTask(task_request.response); 
+    	if (now_num_task>TASKS_NUM) {
+			pushResult();
+		} else {
+			updateTask(task_request.response); 
+		}
 	}
 	});
-	task_request.send("now_num_task="+now_num_task);
+	task_request.send();
 	now_num_task++;
-	if (now_num_task>TASKS_NUM) {
-		pushResult();
-	}
+	
 }
 
 function updateTask(new_trask){
-	var task = document.getElementById('task');
-	task.innerHTML = new_trask;
-	var ip_inputs =  document.getElementsByClassName('ip');
-	for (var index = 0; index < ip_inputs.length; ++index) {
-   		ip_inputs[index].value = "";
-	}
+	$('#task').html(new_trask);
+	$('.ip').map((id, input) => input.value = null);
 }
 
 function getData(){
 	var answers = {
-		'netAddress': document.getElementsByName('netAddress')[0].value,
-		'addressFirstHost': document.getElementsByName('addressFirstHost')[0].value,
-		'addressLastHost': document.getElementsByName('addressLastHost')[0].value,
-		'broadcastAddress': document.getElementsByName('broadcastAddress')[0].value
+		'netAddress': "",
+		'addressFirstHost': "",
+		'addressLastHost': "",
+		'broadcastAddress': ""
 	};
+	Object.keys(answers).map(key => ($('input[name*='+key+']').map((id, item) => answers[key]+=item.value+(id<3 ? '.' : ''))));
 	if (now_num_task > data.length){
 		data.push(answers);
 	} else {
@@ -44,14 +43,13 @@ function getData(){
 
 function pushResult(){
 	var xhr = new XMLHttpRequest();
-	var js ="dat="+JSON.stringify(data);
+	var js ="answers="+JSON.stringify(data);
 	xhr.responseType =	"json";
-	xhr.open('POST', './logics/task inspector.php', true);
+	xhr.open('POST', './inspector', true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
-   	document.write(xhr.response);
-	//console.log(ansvers.task1.netAdress);   
+   	 	window.location.replace("/");
 	}
 	});
 	xhr.send(js);

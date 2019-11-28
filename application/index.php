@@ -89,22 +89,13 @@
 	    '/SetWork',
 	    function () {
 	        $_SESSION["wr_id"] = $_POST['work-select'];
-
 			include("Gens/Gens.php");
 			$manager = new managerTask_Ip(4);
-		    $_SESSION["ip"] = $manager;
-
-	        echo $_SESSION["wr_id"];
-	        echo $manager->getTaskStr(0);
-	    }
-	);
-
-	$app->post(
-	    '/LogOut',
-	    function () {
-	        session_unset();
-	        session_destroy();
-	        echo "succes_status";
+			$taskList = array();
+			for ($i=0; $i < $manager->task_num; $i++) { 
+				array_push($taskList, $manager->getTaskStr($i));
+			}
+		    $_SESSION["ip"] = $taskList;
 	    }
 	);
 
@@ -157,6 +148,24 @@
 			}
 			mysqli_close($link);
 	    }
+	);
+
+	$app->post('/task/:name', 
+		 function ($id) {
+			if (isset($_SESSION["ip"])){
+				echo($_SESSION["ip"][$id]);
+			} else {
+				echo('error');
+			}
+		}
+	);
+
+	$app->post('/inspector', 
+		 function () {
+			$answers = $_POST['answers'];
+			$tasks = json_encode($_SESSION["ip"]);
+			//ответы потом 
+		}
 	);
 
 	$app->run();
