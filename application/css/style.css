@@ -163,7 +163,7 @@ input::-webkit-inner-spin-button {
 .form-signin .form-control {
     position: relative;
     box-sizing: border-box;
-    height: auto; !important
+    height: auto!important;
     padding: 10px;
     font-size: 16px;
 }
@@ -180,6 +180,7 @@ input::-webkit-inner-spin-button {
 }
 
 .name-of{
+	margin-right: 8px!important;
     display: inline-block;
     font-weight: 400;
     text-align: center;
