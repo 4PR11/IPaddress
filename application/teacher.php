@@ -78,7 +78,7 @@
                                 ?>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-primary add-btn" value="Добавить">
+                        <input type="submit" class="btn btn-primary add-btn pull-right" value="Добавить">
                     </div>
                 </form>
             </div>
@@ -91,7 +91,7 @@
                                 <label for="subject-select">Наименование предмета</label>
                                 <input id="subject-name" name="subject-name" type="text" class="custom-text form-control mt-2">
 
-                                <input type="submit" class="btn btn-primary add-btn" value="Добавить">
+                                <input type="submit" class="btn btn-primary add-btn pull-right" value="Добавить">
                             </div>
                             <div class="col-2"></div>
                         </div>
@@ -107,7 +107,7 @@
                                 <label for="subject-select">Наименование группы</label>
                                 <input id="group-name" name="group-name" type="text" class="custom-text form-control mt-2">
 
-                                <input type="submit" class="btn btn-primary add-btn" value="Добавить">
+                                <input type="submit" class="btn btn-primary add-btn pull-right" value="Добавить">
                             </div>
                             <div class="col-2"></div>
                         </div>
@@ -132,7 +132,7 @@
                                 <label for="subject-select">Номер студенческого билета</label>
                                 <input id="code-name" name="code" type="text" class="custom-text form-control mt-2">
 
-                                <input type="submit" class="btn btn-primary add-btn" value="Добавить">
+                                <input type="submit" class="btn btn-primary add-btn pull-right" value="Добавить">
                             </div>
                             <div class="col-2"></div>
                         </div>
